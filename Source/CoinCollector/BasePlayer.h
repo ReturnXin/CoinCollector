@@ -39,4 +39,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCameraComponent* Camera;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MovementForce;
+
+	void MoveUp(float Value);
+	void MoveRight(float Value);
 };

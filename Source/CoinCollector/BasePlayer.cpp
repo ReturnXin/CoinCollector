@@ -18,6 +18,10 @@ ABasePlayer::ABasePlayer()
 	RootComponent = Mesh;
 	SpringArm->SetupAttachment(Mesh);
 	Camera->SetupAttachment(SpringArm);
+
+	// Enabling Physics
+	Mesh->SetSimulatePhysics(true);
+	MovementForce = 100000;
 }
 
 // Called when the game starts or when spawned
@@ -36,4 +40,18 @@ void ABasePlayer::Tick(float DeltaTime)
 void ABasePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAxis("MoveUp", this, &ABasePlayer::MoveUp);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ABasePlayer::MoveRight);
+}
+
+void ABasePlayer::MoveUp(float Value)
+{
+	FVector ForceToAdd = FVector(1, 0, 0) * MovementForce * Value;
+	Mesh->AddForce(ForceToAdd);
+}
+
+void ABasePlayer::MoveRight(float Value)
+{
+	FVector ForceToAdd = FVector(0, 1, 0) * MovementForce * Value;
+	Mesh->AddForce(ForceToAdd);
 }
