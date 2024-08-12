@@ -42,7 +42,7 @@ void ABaseCoin::PlayCustomDeath()
 	GetWorldTimerManager().SetTimer(DeathTimerHandle, this, &ABaseCoin::DeathTimerComplete, 0.5f, false);
 }
 
-void ABaseCoin::OnOverlap(AActor* OverlappedActor, AActor* OtherActor)
+void ABaseCoin::OnOverlap_Implementation(AActor* OverlappedActor, AActor* OtherActor)
 {
 	if (Cast<ABasePlayer>(OtherActor) != nullptr)
 	{
