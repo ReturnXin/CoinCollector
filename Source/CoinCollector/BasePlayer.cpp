@@ -42,6 +42,8 @@ void ABasePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis("MoveUp", this, &ABasePlayer::MoveUp);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ABasePlayer::MoveRight);
+
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ABasePlayer::Jump);
 }
 
 void ABasePlayer::MoveUp(float Value)

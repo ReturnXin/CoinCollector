@@ -45,4 +45,10 @@ public:
 
 	void MoveUp(float Value);
 	void MoveRight(float Value);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float JumpImpulse;
+
+	UFUNCTION(BlueprintImplementableEvent) // allow Blueprints to implement Jump()
+	void Jump();
 };
