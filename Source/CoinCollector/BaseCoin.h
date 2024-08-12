@@ -11,8 +11,8 @@ UCLASS()
 class COINCOLLECTOR_API ABaseCoin : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ABaseCoin();
 
@@ -24,7 +24,7 @@ protected:
 
 	void DeathTimerComplete();
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -38,4 +38,7 @@ public:
 	float RotationRate;
 
 	void PlayCustomDeath();
+
+	UFUNCTION()
+	void OnOverlap(AActor* OverlappedActor, AActor* OtherActor);
 };
